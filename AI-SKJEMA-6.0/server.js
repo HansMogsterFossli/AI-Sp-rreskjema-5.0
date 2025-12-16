@@ -104,11 +104,14 @@ async function llmGenerate({ userAnswer, nextQuestionLabel, mode }) {
     "Hold det kort og menneskelig.";
 
   let user;
-  if (mode === "ack") {
-    user =
-      `Bruker svarte: "${String(userAnswer)}". ` +
-      `Skriv en empatisk respons (maks 1 setning) som leder naturlig inn i neste spørsmål. ` +
-      `IKKE si 'Notert'.`;
+ if (mode === "ack") {
+  user =
+    `Bruker svarte: "${userAnswer}". 
+     Skriv kun én kort empatisk respons (maks 1 setning).
+     IKKE still spørsmål.
+     IKKE be om mer informasjon.
+     IKKE si "kan du fortelle mer".`;
+}
   } else {
     user =
       `Lag en mer naturlig, mindre rigid formulering av dette spørsmålet, med samme mening: "${String(nextQuestionLabel)}". ` +
